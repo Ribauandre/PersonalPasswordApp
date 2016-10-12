@@ -13,6 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -21,7 +27,8 @@ import java.awt.event.ActionListener;
 public class Registration extends JFrame {
     
     private JLabel label, message;
-    private JTextField inputName, inputPass;
+    private JTextField inputName;
+    private JPasswordField inputPass;
     private JButton register;
     public String initUserName;
     private String initPassword;
@@ -39,7 +46,7 @@ public class Registration extends JFrame {
         add(inputName);
         message = new JLabel("Password: ");
         add(message);
-        inputPass = new JTextField(10);
+        inputPass = new JPasswordField(10);
         add(inputPass);
         
         register = new JButton("Register");
@@ -51,6 +58,26 @@ public class Registration extends JFrame {
 
         Handler handler = new Handler();
         register.addActionListener(handler);
+        
+        register.addActionListener(new ActionListener()
+         {
+             @Override
+             public void actionPerformed(ActionEvent event)
+             {
+                 try 
+                 {
+                     BufferedWriter bw = new BufferedWriter(new FileWriter(new File("register.text"), true));
+                     bw.write(inputName.getText());
+                     bw.newLine();
+                     bw.write(inputPass.getText());
+                     bw.newLine();
+                     bw.close();
+                 } catch (IOException e) 
+                   {
+                        System.out.println("Error is " + e);
+                   }
+             }
+         });
     }
     
     class Handler implements ActionListener {
