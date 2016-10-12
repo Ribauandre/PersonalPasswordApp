@@ -7,6 +7,6 @@ package personalpasswordapp;
  */
 public class Testingthisb {
     
-    testing the git push and pull
+    /**testing the git push and pull*/
     
 }
