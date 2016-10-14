@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package personalpasswordapp;
+
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
@@ -15,7 +13,10 @@ public class PersonalPasswordApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Registration app = new Registration();
+        app.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        app.setSize(250, 150);
+        app.setVisible(true);
     }
     
 }
