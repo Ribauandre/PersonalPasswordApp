@@ -21,7 +21,7 @@ public class Login {
      public static boolean checkLogin(String username, String password) throws IOException{
          boolean checked = false;
          for (String line : Files.readAllLines(Paths.get("/path/to/file.txt"))) {
-
+               /*It's not much.*/
          }
          
          
