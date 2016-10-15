@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -20,7 +21,7 @@ import javax.swing.JTextField;
  *
  * @author bryaningram
  */
-public class Login {
+public class Login extends JFrame {
     String fileName = "temp.txt";
     String line = null;
     private JLabel label, message;
