@@ -7,7 +7,7 @@ package personalpasswordapp;
  */
 public class Testingthisb {
     
-    /**testing the git push and pull mom rob*/
-    
+    /**testing the git push and pull*/
+    String What;
     
 }
