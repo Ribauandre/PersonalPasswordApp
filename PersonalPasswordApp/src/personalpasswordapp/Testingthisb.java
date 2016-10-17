@@ -8,6 +8,6 @@ package personalpasswordapp;
 public class Testingthisb {
     
     /**testing the git push and pull*/
-    String What;
+    String Whats;
     
 }
