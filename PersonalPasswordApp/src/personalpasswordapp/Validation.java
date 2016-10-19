@@ -33,9 +33,7 @@ public class Validation {
             bufferedReader.close();         
         }
         catch(FileNotFoundException ex) {
-            System.out.println(
-                "canno't find file file '" + 
-                fileName + "'");                
+            System.out.println("cannot find file " + fileName + "'");                
         }
         catch(IOException ex) {
             System.out.println(
@@ -46,6 +44,10 @@ public class Validation {
         }
         if(line != null){
             isPop = true;
+        }
+        else
+        {
+            isPop = false;
         }
     }   
     
