@@ -28,7 +28,7 @@ public class Registration extends JFrame {
     private JLabel label, message;
     private JTextField inputName;
     private JPasswordField inputPass;
-    private JButton register;
+    private JButton register, cancel;
     public String initUserName;
     private String initPassword;
     
@@ -47,6 +47,15 @@ public class Registration extends JFrame {
         add(message);
         inputPass = new JPasswordField(10);
         add(inputPass);
+        
+        cancel = new JButton("Cancel");
+        add(cancel);
+        cancel.addActionListener((ActionEvent event) -> {
+            inputName.setText("");
+            inputPass.setText("");
+            inputName.setEditable(true);
+            inputPass.setEditable(true);
+        });
         
         register = new JButton("Register");
         add(register);
