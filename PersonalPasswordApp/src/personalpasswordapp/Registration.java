@@ -6,7 +6,8 @@
 package personalpasswordapp;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,21 +36,41 @@ public class Registration extends JFrame {
     public Registration()
     {
         super("Registration");
-        setLayout(new FlowLayout(FlowLayout.LEADING));
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
         label = new JLabel("Please enter Username and Password.");
-        add(label);
+        c.gridx = 0;
+        c.gridwidth = 3;
+        c.gridy = 0;
+        add(label, c);
         
         message = new JLabel("Username: ");
-        add(message);
-        inputName = new JTextField(10);
-        add(inputName);
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 1;
+        add(message, c);
+        inputName = new JTextField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 1;
+        add(inputName, c);
         message = new JLabel("Password: ");
-        add(message);
-        inputPass = new JPasswordField(10);
-        add(inputPass);
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 2;
+        add(message, c);
+        inputPass = new JPasswordField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 2;
+        add(inputPass, c);
         
         cancel = new JButton("Cancel");
-        add(cancel);
+        c.gridwidth = 1;
+        c.gridx = 1;
+        c.gridy = 3;
+        add(cancel, c);
         cancel.addActionListener((ActionEvent event) -> {
             inputName.setText("");
             inputPass.setText("");
@@ -58,7 +79,10 @@ public class Registration extends JFrame {
         });
         
         register = new JButton("Register");
-        add(register);
+        c.gridwidth = 1;
+        c.gridx = 2;
+        c.gridy = 3;
+        add(register, c);
         register.addActionListener((ActionEvent event) -> {
             initUserName = inputName.getText();
             initPassword = inputPass.getText();
@@ -92,14 +116,25 @@ public class Registration extends JFrame {
         @Override
         public void actionPerformed(ActionEvent event)
         {
-            if (initUserName == initUserName && initPassword == initPassword)
+            if (inputName.getText().equals("") || inputPass.getText().equals(""))
             {
-                label.setText("Registration Successfully Completed");
-                inputName.setEditable(false);
-                inputPass.setEditable(false);
-                inputName.setBackground(Color.LIGHT_GRAY);
-                inputPass.setBackground(Color.LIGHT_GRAY);
+                register.setEnabled(false);
+                System.out.println("Enter Username and Password");
+                register.setEnabled(true);
             }
+            else
+            {
+                register.setEnabled(true);
+                if (initUserName == initUserName && initPassword == initPassword)
+                {
+                    label.setText("Registration Successfully Completed");
+                    inputName.setEditable(false);
+                    inputPass.setEditable(false);
+                    inputName.setBackground(Color.LIGHT_GRAY);
+                    inputPass.setBackground(Color.LIGHT_GRAY);
+                }
+            }
+            
         }
     }
     
