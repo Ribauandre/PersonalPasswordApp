@@ -20,8 +20,9 @@ public class PersonalPasswordApp {
         Validation.checkPop();
         Registration app = new Registration();
         Login app2 = new Login();
-
-        if(Validation.isPop = false)
+        File f = new File("register.text");
+        
+        if(f.length()==0)
         {
             app.setSize(250, 150);
             app.setVisible(true);
