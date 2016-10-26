@@ -18,6 +18,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPasswordField;
 
 /**
@@ -132,6 +133,11 @@ public class Registration extends JFrame {
                     inputPass.setEditable(false);
                     inputName.setBackground(Color.LIGHT_GRAY);
                     inputPass.setBackground(Color.LIGHT_GRAY);
+                    Login log = new Login();
+                    log.setVisible(true);
+                    log.setSize(250, 150);
+                    log.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
                 }
             }
             
