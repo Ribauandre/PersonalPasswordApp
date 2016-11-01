@@ -37,7 +37,7 @@ public class Login extends JFrame {
     private JLabel label, message;
     private JTextField inputName;
     private JPasswordField inputPass;
-    private JButton login, cancel;
+    private JButton login, cancel, reset;
     public String initUserName;
     private String initPassword;
 
@@ -73,21 +73,22 @@ public class Login extends JFrame {
         c.gridy = 2;
         add(inputPass, c);
 
-        cancel = new JButton("Cancel");
+     reset = new JButton("Reset");
         c.gridwidth = 1;
-        c.gridx = 1;
+        c.gridx = 2;
         c.gridy = 3;
-        add(cancel, c);
-        cancel.addActionListener((ActionEvent event) -> {
-            inputName.setText("");
-            inputPass.setText("");
-            inputName.setEditable(true);
-            inputPass.setEditable(true);
+        add(reset, c);
+        reset.addActionListener((ActionEvent event) -> {
+            SecurityKEy sequrQestion = new SecurityKEy();
+                    sequrQestion.setVisible(true);
+                    sequrQestion.setSize(250, 150);
+                    sequrQestion.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
         });
 
         login = new JButton("Login");
         c.gridwidth = 1;
-        c.gridx = 2;
+        c.gridx = 1;
         c.gridy = 3;
         add(login, c);
         login.addActionListener((ActionEvent event) -> {
@@ -154,13 +155,4 @@ public class Login extends JFrame {
 
             }
         }
-    public static boolean checkLogin(String username, String password) throws IOException {
-        boolean checked = false;
-        for (String line : Files.readAllLines(Paths.get("/path/to/file.txt"))) {
-            /*It's not much.*/
-        }
-
-        return checked;
-    }
-
 }
