@@ -17,8 +17,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -118,23 +121,35 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent event)
             {
+                try {
+                    Validation.setUserPass();
+                } catch (IOException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 if (inputName.getText().equals("") || inputPass.getText().equals(""))
                 {
                     login.setEnabled(false);
                     System.out.println("Enter Username and Password");
                     login.setEnabled(true);
+                    
                 }
-                if (inputName.getText().equals("user") && inputPass.getText().equals("pass"))
+                if (inputName.getText().equals(Validation.user) && inputPass.getText().equals(Validation.pass))
                 {
                     label.setText("Login Successful");
                     inputName.setEditable(false);
                     inputPass.setEditable(false);
                     inputName.setBackground(Color.LIGHT_GRAY);
                     inputPass.setBackground(Color.LIGHT_GRAY);
+                    Account account = new Account();
+                    account.setVisible(true);
+                    account.setSize(250, 150);
+                    account.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
                 }
                 else
                 {
                     System.out.println("Enter correct Username and Password");
+                    label.setText("Incorrect Login");
                 }
 
             }
