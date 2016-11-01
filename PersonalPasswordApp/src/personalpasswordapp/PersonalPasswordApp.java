@@ -17,7 +17,6 @@ public class PersonalPasswordApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        Validation.checkPop();
         Registration app = new Registration();
         Login app2 = new Login();
         File f = new File("register.text");
