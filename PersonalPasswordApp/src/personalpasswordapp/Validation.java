@@ -24,9 +24,11 @@ public class Validation {
 
     static String user;
     static String pass;
+    
 
 
 
+    
     public static void setUserPass() throws IOException {
         String fileName = "register.text";
 		List<String> list = new ArrayList<>();
