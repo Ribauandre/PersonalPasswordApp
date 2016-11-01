@@ -26,7 +26,25 @@ import javax.swing.JPasswordField;
  *
  * @author rds5451
  */
-public class SecurityKEy 
+public class SecurityKEy extends JFrame
 {
-    //add section here
+    private JLabel label, message;
+    private JButton add;
+
+    
+public SecurityKEy()
+    {
+        super("SecurityKEy");
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        label = new JLabel("ADD STUFF about security and stuff");
+        c.gridx = 0;
+        c.gridwidth = 3;
+        c.gridy = 0;
+        add(label, c);
+       
+        
+
+    }
 }
