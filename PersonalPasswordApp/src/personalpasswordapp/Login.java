@@ -25,6 +25,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -73,10 +74,15 @@ public class Login extends JFrame {
         c.gridy = 2;
         add(inputPass, c);
 
-     reset = new JButton("Reset");
+     reset = new JButton("<HTML><FONT color=\"#00009\"><u>Forgot password?</U></FONT></HTML>");
         c.gridwidth = 1;
-        c.gridx = 2;
-        c.gridy = 3;
+        c.gridx = 3;
+        c.gridy = 2;
+        reset.setHorizontalAlignment(SwingConstants.LEFT);
+        reset.setBorderPainted(false);
+        reset.setOpaque(false);
+        reset.setBackground(Color.WHITE);
+        reset.setToolTipText("Reset password");
         add(reset, c);
         reset.addActionListener((ActionEvent event) -> {
             SecurityKEy sequrQestion = new SecurityKEy();
@@ -87,7 +93,7 @@ public class Login extends JFrame {
         });
 
         login = new JButton("Login");
-        c.gridwidth = 1;
+        c.gridwidth = 2;
         c.gridx = 1;
         c.gridy = 3;
         add(login, c);
@@ -108,7 +114,6 @@ public class Login extends JFrame {
                     String line;
 
                     while ((line = br.readLine()) != null) {
-                        System.out.println(line);
                     }
                 } catch (IOException e) {
                     System.out.println("Error is " + e);
