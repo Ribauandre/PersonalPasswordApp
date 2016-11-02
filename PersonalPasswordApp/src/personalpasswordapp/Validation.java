@@ -24,7 +24,6 @@ public class Validation {
 
     static String user;
     static String pass;
-    
 
 
 
