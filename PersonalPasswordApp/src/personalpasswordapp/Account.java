@@ -14,6 +14,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,7 +50,14 @@ public Account()
         c.gridx = 1;
         c.gridy = 3;
         add(add, c);
-          
+         add.addActionListener((ActionEvent event) -> {
+            Add add= new Add();
+                    add.setVisible(true);
+                    add.setSize(250, 150);
+                    add.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
+        });
+        
     }
     
-}
+} 
