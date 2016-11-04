@@ -31,6 +31,7 @@ public class SecurityKEy extends JFrame
     private JLabel label, message;
     private JButton add;
     public JTextField inputSecurityKey;
+    private JButton Submit, cancel;
     
 public SecurityKEy()
     {
@@ -61,5 +62,28 @@ public SecurityKEy()
         c.gridx = 1;
         c.gridy = 2;
         add(inputSecurityKey, c);
+        
+        
+        cancel = new JButton("Cancel");
+        c.gridwidth = 1;
+        c.gridx = 1;
+        c.gridy = 3;
+        add(cancel, c);
+        cancel.addActionListener((ActionEvent event) -> {
+            inputSecurityKey.setText("");
+        });
+        
+        Submit = new JButton("Register");
+        c.gridwidth = 1;
+        c.gridx = 2;
+        c.gridy = 3;
+        add(Submit, c);
+        Submit.addActionListener((ActionEvent event) -> {
+            //initUserName = inputName.getText();
+           // initPassword = inputPass.getText();
+        });
+
+        
+        
     }
 }
