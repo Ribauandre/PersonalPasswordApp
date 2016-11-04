@@ -30,7 +30,7 @@ public class SecurityKEy extends JFrame
 {
     private JLabel label, message;
     private JButton add;
-
+    public JTextField inputSecurityKey;
     
 public SecurityKEy()
     {
@@ -38,13 +38,28 @@ public SecurityKEy()
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        label = new JLabel("ADD STUFF about security and stuff");
+        label = new JLabel("Please choose a security question and answer.");
         c.gridx = 0;
         c.gridwidth = 3;
         c.gridy = 0;
         add(label, c);
        
+        message = new JLabel("Security Question: ");
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 1;
+        add(message, c);
+        //inputSecurityQ = new JScoll():
         
-
+        message = new JLabel("Answer: ");
+         c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 1;
+        add(message, c);
+        inputSecurityKey = new JTextField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 1;
+        add(inputSecurityKey, c);
     }
 }
