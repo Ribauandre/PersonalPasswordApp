@@ -26,16 +26,15 @@ import javax.swing.JPasswordField;
  * @author bryaningram
  */
 public class Registration extends JFrame {
-    
+
     private JLabel label, message;
     private JTextField inputName;
-    private JPasswordField inputPass;
+    private JPasswordField inputPass, inputPass2;
     private JButton register, cancel;
     public String initUserName;
     private String initPassword;
-    
-    public Registration()
-    {
+
+    public Registration() {
         super("Registration");
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -45,7 +44,7 @@ public class Registration extends JFrame {
         c.gridwidth = 3;
         c.gridy = 0;
         add(label, c);
-        
+
         message = new JLabel("Username: ");
         c.gridwidth = 1;
         c.gridx = 0;
@@ -66,23 +65,35 @@ public class Registration extends JFrame {
         c.gridx = 1;
         c.gridy = 2;
         add(inputPass, c);
-        
+        message = new JLabel("Re-enter: ");
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 3;
+        add(message, c);
+        inputPass2 = new JPasswordField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 3;
+        add(inputPass2, c);
+
         cancel = new JButton("Cancel");
         c.gridwidth = 1;
         c.gridx = 1;
-        c.gridy = 3;
+        c.gridy = 4;
         add(cancel, c);
         cancel.addActionListener((ActionEvent event) -> {
             inputName.setText("");
             inputPass.setText("");
+            inputPass2.setText("");
             inputName.setEditable(true);
             inputPass.setEditable(true);
+            inputPass2.setEditable(true);
         });
-        
+
         register = new JButton("Register");
         c.gridwidth = 1;
         c.gridx = 2;
-        c.gridy = 3;
+        c.gridy = 4;
         add(register, c);
         register.addActionListener((ActionEvent event) -> {
             initUserName = inputName.getText();
@@ -91,48 +102,38 @@ public class Registration extends JFrame {
 
         Handler handler = new Handler();
         register.addActionListener(handler);
-        
-        register.addActionListener(new ActionListener()
-         {
-             @Override
-             public void actionPerformed(ActionEvent event)
-             {
-                 try 
-                 {
-                     BufferedWriter bw = new BufferedWriter(new FileWriter(new File("register.text"), true));
-                     bw.write(inputName.getText());
-                     bw.newLine();
-                     bw.write(inputPass.getText());
-                     bw.newLine();
-                     bw.close();
-                 } catch (IOException e) 
-                   {
-                        System.out.println("Error is " + e);
-                   }
-             }
-         });
     }
-    
+
     class Handler implements ActionListener {
+
         @Override
-        public void actionPerformed(ActionEvent event)
-        {
-            if (inputName.getText().equals("") || inputPass.getText().equals(""))
-            {
+        public void actionPerformed(ActionEvent event) {
+            if (inputName.getText().equals("") || inputPass.getText().equals("") || inputPass2.getText().equals("")) {
                 register.setEnabled(false);
                 System.out.println("Enter Username and Password");
                 register.setEnabled(true);
-            }
-            else
-            {
+            } else if (!inputPass.getText().equals(inputPass2.getText())) {
+                register.setEnabled(false);
+                System.out.println("Password Fields Don't Match");
                 register.setEnabled(true);
-                if (initUserName == initUserName && initPassword == initPassword)
-                {
+            } else {
+                register.setEnabled(true);
+                if (initUserName == initUserName && initPassword == initPassword) {
                     label.setText("Registration Successfully Completed");
                     inputName.setEditable(false);
                     inputPass.setEditable(false);
                     inputName.setBackground(Color.LIGHT_GRAY);
                     inputPass.setBackground(Color.LIGHT_GRAY);
+                    try {
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(new File("register.text"), true));
+                        bw.write(inputName.getText());
+                        bw.newLine();
+                        bw.write(inputPass.getText());
+                        bw.newLine();
+                        bw.close();
+                    } catch (IOException e) {
+                        System.out.println("Error is " + e);
+                    }
                     Login log = new Login();
                     log.setVisible(true);
                     log.setSize(250, 150);
@@ -140,21 +141,18 @@ public class Registration extends JFrame {
                     dispose();
                 }
             }
-            
+
         }
     }
-    
-    public String getUserName()
-    {
+
+    public String getUserName() {
         initUserName = "Username";
         return initUserName;
     }
-    
-    public String getPassword()
-    {
+
+    public String getPassword() {
         initPassword = "Password";
         return initPassword;
     }
-    
 
 }
