@@ -43,87 +43,97 @@ import static personalpasswordapp.Validation.accounts;
  */
 public class Add extends JFrame {
 
-    private JLabel label, name, pass, message;
-    private JTextField inputName, inputUser;
-    private JPasswordField inputPass;
+    private JLabel label, message;
+    private JTextField inputName, inputUser, inputPass;
     private JButton add, cancel;
     public String initUserName;
+    public String initUser;
     private String initPassword;
-    private String initUser;
-
+    
+    
     public Add() {
-
         super("Add");
-        setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        label = new JLabel("Please enter Account Name and password.");
-        c.gridx = 0;
-        c.gridwidth = 3;
-        c.gridy = 0;
-        add(label, c);
-
-        JLabel message = new JLabel("Account Name");
-        c.gridwidth = 1;
-        c.gridx = 0;
-        c.gridy = 1;
-        add(message, c);
-        inputName = new JTextField();
-        c.gridwidth = 2;
-        c.gridx = 1;
-        c.gridy = 1;
-        add(inputName, c);
-
-        message = new JLabel("Accoount UserName");
-        c.gridwidth = 1;
-        c.gridx = 0;
-        c.gridy = 1;
-        add(message, c);
-        inputName = new JTextField();
-        c.gridwidth = 2;
-        c.gridx = 1;
-        c.gridy = 1;
-        add(inputUser, c);
-
-        message = new JLabel("Account Password");
-        c.gridwidth = 1;
-        c.gridx = 0;
-        c.gridy = 1;
-        add(message, c);
-        inputName = new JTextField();
-        c.gridwidth = 2;
-        c.gridx = 1;
-        c.gridy = 1;
-        add(inputPass, c);
-
-        add = new JButton("Add");
-        c.gridwidth = 1;
-        c.gridx = 2;
-        c.gridy = 3;
-        add(add, c);
-        add.addActionListener((ActionEvent event) -> {
-            initUserName = inputName.getText();
-            initUser = inputUser.getText();
-            initPassword = inputPass.getText();
-        });
         try {
+            setLayout(new GridBagLayout());
+            GridBagConstraints c = new GridBagConstraints();
+            c.fill = GridBagConstraints.BOTH;
+            label = new JLabel("Please enter Account Info.");
+            c.gridx = 0;
+            c.gridwidth = 3;
+            c.gridy = 0;
+            add(label, c);
             Validation.setAccount();
+            message = new JLabel("Account Name ");
+            c.gridwidth = 1;
+            c.gridx = 0;
+            c.gridy = 1;
+            add(message, c);
+            inputName = new JTextField();
+            c.gridwidth = 2;
+            c.gridx = 1;
+            c.gridy = 1;
+            add(inputName, c);
+            message = new JLabel("Account UserName ");
+            c.gridwidth = 1;
+            c.gridx = 0;
+            c.gridy = 2;
+            add(message, c);
+            inputUser = new JTextField();
+            c.gridwidth = 2;
+            c.gridx = 1;
+            c.gridy = 2;
+            add(inputUser, c);
+            message = new JLabel("Account Pass ");
+            c.gridwidth = 1;
+            c.gridx = 0;
+            c.gridy = 3;
+            add(message, c);
+            inputPass = new JPasswordField();
+            c.gridwidth = 2;
+            c.gridx = 1;
+            c.gridy = 3;
+            add(inputPass, c);
+            cancel = new JButton("Cancel");
+            c.gridwidth = 1;
+            c.gridx = 1;
+            c.gridy = 4;
+            add(cancel, c);
+            cancel.addActionListener((ActionEvent event) -> {
+                inputName.setText("");
+                inputPass.setText("");
+                inputUser.setText("");
+                inputName.setEditable(true);
+                inputPass.setEditable(true);
+                inputUser.setEditable(true);
+            });
+            add = new JButton("Add");
+            c.gridwidth = 1;
+            c.gridx = 2;
+            c.gridy = 4;
+            add(add, c);
+            add.addActionListener((ActionEvent event) -> {
+                initUserName = inputName.getText();
+                initPassword = inputPass.getText();
+                initUser = inputUser.getText();
+            });
+            Handler handler = new Handler();
+            add.addActionListener(handler);
+            
         } catch (IOException ex) {
             Logger.getLogger(Add.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Handler handler = new Handler();
-        add.addActionListener(handler);
     }
 
     class Handler implements ActionListener {
 
+        @Override
         public void actionPerformed(ActionEvent event) {
-            for (int i = 0; i < Validation.accounts.size(); i++) {
-                if (accounts.get(i).equals(initUser) || accounts.get(i).equals(initPassword) || accounts.get(i).equals(initUserName)) {
-                    label.setText("Already exists.");
-                } else {
+                    label.setText("Add Successfully Completed");
+                    inputName.setEditable(false);
+                    inputPass.setEditable(false);
+                    inputName.setBackground(Color.LIGHT_GRAY);
+                    inputPass.setBackground(Color.LIGHT_GRAY);
                     try {
-                        label.setText("Succsess!!!");
                         BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
                         bw.write(inputName.getText());
                         bw.newLine();
@@ -132,17 +142,15 @@ public class Add extends JFrame {
                         bw.write(inputPass.getText());
                         bw.newLine();
                         bw.close();
-                        Account log = new Account();
-                        log.setVisible(true);
-                        log.setSize(250, 150);
-                        log.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                        dispose();
                     } catch (IOException e) {
                         System.out.println("Error is " + e);
                     }
+                    Account log = new Account();
+                    log.setVisible(true);
+                    log.setSize(350, 150);
+                    log.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
                 }
-
             }
+
         }
-    }
-}
