@@ -6,10 +6,12 @@
 package personalpasswordapp;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -41,12 +43,13 @@ public class Validation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+                BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
                 user = list.get(0);
                 pass = list.get(1);
 
 	}
     public static void setAccount() throws IOException {
-        String fileName = "account.text";
+        String fileName = "accounts.text";
 		List<String> list = new ArrayList<>();
 
 		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
@@ -57,6 +60,7 @@ public class Validation {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+                
 	}
 
 	}
