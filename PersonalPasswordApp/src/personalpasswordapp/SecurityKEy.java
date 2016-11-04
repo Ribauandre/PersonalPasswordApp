@@ -54,12 +54,12 @@ public SecurityKEy()
         message = new JLabel("Answer: ");
          c.gridwidth = 1;
         c.gridx = 0;
-        c.gridy = 1;
+        c.gridy = 2;
         add(message, c);
         inputSecurityKey = new JTextField();
         c.gridwidth = 2;
         c.gridx = 1;
-        c.gridy = 1;
+        c.gridy = 2;
         add(inputSecurityKey, c);
     }
 }
