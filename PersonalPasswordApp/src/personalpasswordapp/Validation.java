@@ -24,6 +24,7 @@ public class Validation {
 
     static String user;
     static String pass;
+    static List<String> accounts;
 
 
 
@@ -43,6 +44,19 @@ public class Validation {
                 user = list.get(0);
                 pass = list.get(1);
 
+	}
+    public static void setAccount() throws IOException {
+        String fileName = "account.text";
+		List<String> list = new ArrayList<>();
+
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+
+			//br returns as stream and convert it into a List
+			accounts = br.lines().collect(Collectors.toList());
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	}
