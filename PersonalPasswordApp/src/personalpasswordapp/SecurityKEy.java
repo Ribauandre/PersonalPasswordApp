@@ -73,9 +73,9 @@ public SecurityKEy()
             inputSecurityKey.setText("");
         });
         
-        Submit = new JButton("Register");
+        Submit = new JButton("Submit");
         c.gridwidth = 1;
-        c.gridx = 2;
+        c.gridx = 3;
         c.gridy = 3;
         add(Submit, c);
         Submit.addActionListener((ActionEvent event) -> {
