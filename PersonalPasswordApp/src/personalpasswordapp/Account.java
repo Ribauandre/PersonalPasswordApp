@@ -45,7 +45,7 @@ public Account()
         add(label, c);
        
         
-        add = new JButton("Add (does not work)");
+        add = new JButton("Add");
         c.gridwidth = 1;
         c.gridx = 1;
         c.gridy = 3;
