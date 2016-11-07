@@ -19,4 +19,7 @@ public class AccountsOB {
         accountUser = user;
         accountPass = pass;
     }
+    public String getName(){
+        return accountName;
+    }
 }
