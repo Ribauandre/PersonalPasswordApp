@@ -52,75 +52,69 @@ public class Add extends JFrame {
 
     public Add() {
         super("Add");
-        try {
-            setLayout(new GridBagLayout());
-            GridBagConstraints c = new GridBagConstraints();
-            c.fill = GridBagConstraints.BOTH;
-            label = new JLabel("Please enter Account Info.");
-            c.gridx = 0;
-            c.gridwidth = 3;
-            c.gridy = 0;
-            add(label, c);
-            Validation.setAccount();
-            message = new JLabel("Account Name ");
-            c.gridwidth = 1;
-            c.gridx = 0;
-            c.gridy = 1;
-            add(message, c);
-            inputName = new JTextField();
-            c.gridwidth = 2;
-            c.gridx = 1;
-            c.gridy = 1;
-            add(inputName, c);
-            message = new JLabel("Account UserName ");
-            c.gridwidth = 1;
-            c.gridx = 0;
-            c.gridy = 2;
-            add(message, c);
-            inputUser = new JTextField();
-            c.gridwidth = 2;
-            c.gridx = 1;
-            c.gridy = 2;
-            add(inputUser, c);
-            message = new JLabel("Account Pass ");
-            c.gridwidth = 1;
-            c.gridx = 0;
-            c.gridy = 3;
-            add(message, c);
-            inputPass = new JPasswordField();
-            c.gridwidth = 2;
-            c.gridx = 1;
-            c.gridy = 3;
-            add(inputPass, c);
-            cancel = new JButton("Cancel");
-            c.gridwidth = 1;
-            c.gridx = 1;
-            c.gridy = 4;
-            add(cancel, c);
-            cancel.addActionListener((ActionEvent event) -> {
-                inputName.setText("");
-                inputPass.setText("");
-                inputUser.setText("");
-                inputName.setEditable(true);
-                inputPass.setEditable(true);
-                inputUser.setEditable(true);
-            });
-            add = new JButton("Add");
-            c.gridwidth = 1;
-            c.gridx = 2;
-            c.gridy = 4;
-            add(add, c);
-            add.addActionListener((ActionEvent event) -> {
-                initUserName = inputName.getText();
-                initPassword = inputPass.getText();
-                initUser = inputUser.getText();
-            });
-            Handler handler = new Handler();
-            add.addActionListener(handler);
-
-        } catch (IOException ex) {
-            Logger.getLogger(Add.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.BOTH;
+        label = new JLabel("Please enter Account Info.");
+        c.gridx = 0;
+        c.gridwidth = 3;
+        c.gridy = 0;
+        add(label, c);
+        message = new JLabel("Account Name ");
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 1;
+        add(message, c);
+        inputName = new JTextField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 1;
+        add(inputName, c);
+        message = new JLabel("Account UserName ");
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 2;
+        add(message, c);
+        inputUser = new JTextField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 2;
+        add(inputUser, c);
+        message = new JLabel("Account Pass ");
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 3;
+        add(message, c);
+        inputPass = new JPasswordField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 3;
+        add(inputPass, c);
+        cancel = new JButton("Cancel");
+        c.gridwidth = 1;
+        c.gridx = 1;
+        c.gridy = 4;
+        add(cancel, c);
+        cancel.addActionListener((ActionEvent event) -> {
+            inputName.setText("");
+            inputPass.setText("");
+            inputUser.setText("");
+            inputName.setEditable(true);
+            inputPass.setEditable(true);
+            inputUser.setEditable(true);
+        });
+        add = new JButton("Add");
+        c.gridwidth = 1;
+        c.gridx = 2;
+        c.gridy = 4;
+        add(add, c);
+        add.addActionListener((ActionEvent event) -> {
+            initUserName = inputName.getText();
+            initPassword = inputPass.getText();
+            initUser = inputUser.getText();
+        });
+        Handler handler = new Handler();
+        add.addActionListener(handler);
     }
 
     class Handler implements ActionListener {
