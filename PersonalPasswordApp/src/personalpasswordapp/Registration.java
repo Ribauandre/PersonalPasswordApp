@@ -18,6 +18,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.JComboBox;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPasswordField;
 
@@ -28,11 +29,13 @@ import javax.swing.JPasswordField;
 public class Registration extends JFrame {
 
     private JLabel label, message;
-    private JTextField inputName;
+    private JTextField inputName, security;
     private JPasswordField inputPass, inputPass2;
     private JButton register, cancel;
     public String initUserName;
     private String initPassword;
+    private String[] questions = {"","a", "b", "c"};
+    static JComboBox<String> q;
 
     public Registration() {
         super("Registration");
@@ -79,7 +82,7 @@ public class Registration extends JFrame {
         cancel = new JButton("Cancel");
         c.gridwidth = 1;
         c.gridx = 1;
-        c.gridy = 4;
+        c.gridy = 6;
         add(cancel, c);
         cancel.addActionListener((ActionEvent event) -> {
             inputName.setText("");
@@ -93,7 +96,7 @@ public class Registration extends JFrame {
         register = new JButton("Register");
         c.gridwidth = 1;
         c.gridx = 2;
-        c.gridy = 4;
+        c.gridy = 6;
         add(register, c);
         register.addActionListener((ActionEvent event) -> {
             initUserName = inputName.getText();
@@ -102,15 +105,36 @@ public class Registration extends JFrame {
 
         Handler handler = new Handler();
         register.addActionListener(handler);
+        
+        message = new JLabel("Security Question:");
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 4;
+        add(message, c);
+        q = new JComboBox<>(questions);
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 4;
+        add(q, c);
+        message = new JLabel("Answer:");
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 5;
+        add(message, c);
+        security = new JTextField();
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 5;
+        add(security, c);
     }
 
     class Handler implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent event) {
-            if (inputName.getText().equals("") || inputPass.getText().equals("") || inputPass2.getText().equals("")) {
+            if (inputName.getText().equals("") || inputPass.getText().equals("") || inputPass2.getText().equals("") || security.getText().equals("")) {
                 register.setEnabled(false);
-                System.out.println("Enter Username and Password");
+                System.out.println("All fields must be filled");
                 register.setEnabled(true);
             } else if (!inputPass.getText().equals(inputPass2.getText())) {
                 register.setEnabled(false);
@@ -130,6 +154,7 @@ public class Registration extends JFrame {
                         bw.newLine();
                         bw.write(inputPass.getText());
                         bw.newLine();
+                        
                         bw.close();
                     } catch (IOException e) {
                         System.out.println("Error is " + e);
