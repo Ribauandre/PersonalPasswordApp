@@ -21,6 +21,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -75,7 +76,7 @@ public SecurityKEy()
         
         Submit = new JButton("Submit");
         c.gridwidth = 1;
-        c.gridx = 3;
+        c.gridx = 2;
         c.gridy = 3;
         add(Submit, c);
         Submit.addActionListener((ActionEvent event) -> {
@@ -83,7 +84,12 @@ public SecurityKEy()
            // initPassword = inputPass.getText();
         });
 
-        
+        String[] questions = { "a", "b", "c" };
+        final JComboBox<String> q = new JComboBox<String>(questions);
+        c.gridwidth = 2;
+        c.gridx = 1;
+        c.gridy = 1;
+        add(q, c);
         
     }
 }
