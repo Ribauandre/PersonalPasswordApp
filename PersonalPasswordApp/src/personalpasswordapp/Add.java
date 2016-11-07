@@ -49,8 +49,7 @@ public class Add extends JFrame {
     public String initUserName;
     public String initUser;
     private String initPassword;
-    
-    
+
     public Add() {
         super("Add");
         try {
@@ -118,7 +117,7 @@ public class Add extends JFrame {
             });
             Handler handler = new Handler();
             add.addActionListener(handler);
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Add.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -128,29 +127,37 @@ public class Add extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent event) {
-                    label.setText("Add Successfully Completed");
-                    inputName.setEditable(false);
-                    inputPass.setEditable(false);
-                    inputName.setBackground(Color.LIGHT_GRAY);
-                    inputPass.setBackground(Color.LIGHT_GRAY);
-                    try {
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
-                        bw.write(inputName.getText());
-                        bw.newLine();
-                        bw.write(inputUser.getText());
-                        bw.newLine();
-                        bw.write(inputPass.getText());
-                        bw.newLine();
-                        bw.close();
-                    } catch (IOException e) {
-                        System.out.println("Error is " + e);
-                    }
-                    Account log = new Account();
-                    log.setVisible(true);
-                    log.setSize(350, 150);
-                    log.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                    dispose();
+            if (inputName.getText().equals("") || inputPass.getText().equals("") || inputUser.getText().equals("")) {
+                add.setEnabled(false);
+                System.out.println("Enter Username and Password");
+                label.setText("All fields must be populated");
+                add.setEnabled(true);
+            } else {
+                label.setText("Add Successfully Completed");
+                inputName.setEditable(false);
+                inputPass.setEditable(false);
+                inputName.setBackground(Color.LIGHT_GRAY);
+                inputPass.setBackground(Color.LIGHT_GRAY);
+                try {
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
+                    bw.write(inputName.getText());
+                    bw.newLine();
+                    bw.write(inputUser.getText());
+                    bw.newLine();
+                    bw.write(inputPass.getText());
+                    bw.newLine();
+                    bw.close();
+                } catch (IOException e) {
+                    System.out.println("Error is " + e);
                 }
+                Validation.setAccountsList();
+                Account log = new Account();
+                log.setVisible(true);
+                log.setSize(350, 150);
+                log.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                dispose();
             }
-
         }
+    }
+
+}
