@@ -87,7 +87,7 @@ public class Login extends JFrame {
         reset.addActionListener((ActionEvent event) -> {
             SecurityKEy sequrQestion = new SecurityKEy();
                     sequrQestion.setVisible(true);
-                    sequrQestion.setSize(250, 150);
+                    sequrQestion.setSize(400, 150);
                     sequrQestion.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
         });
@@ -148,7 +148,7 @@ public class Login extends JFrame {
                     inputPass.setBackground(Color.LIGHT_GRAY);
                     Account account = new Account();
                     account.setVisible(true);
-                    account.setSize(250, 150);
+                    account.setSize(400, 150);
                     account.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
                 }
