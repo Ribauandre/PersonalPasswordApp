@@ -136,7 +136,7 @@ public class Registration extends JFrame {
                     }
                     Login log = new Login();
                     log.setVisible(true);
-                    log.setSize(350, 150);
+                    log.setSize(400, 150);
                     log.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
                 }
