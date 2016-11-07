@@ -53,7 +53,7 @@ public Account()
          add.addActionListener((ActionEvent event) -> {
             Add add= new Add();
                     add.setVisible(true);
-                    add.setSize(250, 150);
+                    add.setSize(400, 150);
                     add.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
         });
