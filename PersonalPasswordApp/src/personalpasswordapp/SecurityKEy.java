@@ -84,7 +84,7 @@ public SecurityKEy()
            // initPassword = inputPass.getText();
         });
 
-        String[] questions = { "a", "b", "c" };
+        String[] questions = { "","a", "b", "c" };
         final JComboBox<String> q = new JComboBox<String>(questions);
         c.gridwidth = 2;
         c.gridx = 1;
