@@ -147,7 +147,7 @@ public class Add extends JFrame {
                     }
                     Account log = new Account();
                     log.setVisible(true);
-                    log.setSize(350, 150);
+                    log.setSize(400, 150);
                     log.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
                 }
