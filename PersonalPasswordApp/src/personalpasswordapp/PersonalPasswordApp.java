@@ -23,13 +23,13 @@ public class PersonalPasswordApp {
         
         if(f.length()==0)
         {
-            app.setSize(400, 150);
+            app.setSize(400, 200);
             app.setVisible(true);
             app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
         else
         {
-            app2.setSize(400,150);
+            app2.setSize(400,200);
             app2.setVisible(true);
             app2.setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
