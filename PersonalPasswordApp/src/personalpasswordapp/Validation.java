@@ -18,6 +18,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -27,7 +29,7 @@ public class Validation {
     static String user;
     static String pass;
     static List<String> list = new ArrayList<>();
-    static ArrayList accounts = new ArrayList<>();
+    static ArrayList<AccountsOB> accounts = new ArrayList<>();
     public static AccountsOB account;
 
     public static void setUserPass() throws IOException {
@@ -42,21 +44,26 @@ public class Validation {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
         user = list.get(0);
         pass = list.get(1);
 
     }
 
-    public static void setAccount() throws IOException {
+    public static void setAccount(){
         String fileName = "accounts.text";
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
+        } catch (IOException ex) {
+            Logger.getLogger(Validation.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
 
             //br returns as stream and convert it into a List
             list = br.lines().collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Validation.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -72,7 +79,6 @@ public class Validation {
             account = new AccountsOB(name, user, pass);
             accounts.add(account);
             System.out.println(accounts.size());
+                    }
         }
     }
-
-}
