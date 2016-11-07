@@ -26,45 +26,53 @@ public class Validation {
 
     static String user;
     static String pass;
-    static List<String> accounts;
+    static List<String> list = new ArrayList<>();
+    static ArrayList accounts = new ArrayList<>();
+    public static AccountsOB account;
 
-
-
-    
     public static void setUserPass() throws IOException {
         String fileName = "register.text";
-		List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
 
-		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
 
-			//br returns as stream and convert it into a List
-			list = br.lines().collect(Collectors.toList());
+            //br returns as stream and convert it into a List
+            list = br.lines().collect(Collectors.toList());
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-                BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
-                user = list.get(0);
-                pass = list.get(1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
+        user = list.get(0);
+        pass = list.get(1);
 
-	}
+    }
+
     public static void setAccount() throws IOException {
         String fileName = "accounts.text";
-		List<String> list = new ArrayList<>();
 
-		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
 
-			//br returns as stream and convert it into a List
-			accounts = br.lines().collect(Collectors.toList());
+            //br returns as stream and convert it into a List
+            list = br.lines().collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-                
-	}
+    }
 
-	}
+    public static void setAccountsList() {
+        for (int i = 0; i < list.size();) {
+            String name = list.get(i);
+            i++;
+            String user = list.get(i);
+            i++;
+            String pass = list.get(i);
+            i++;
+            account = new AccountsOB(name, user, pass);
+            accounts.add(account);
+            System.out.println(accounts.size());
+        }
+    }
 
-    
-
-    
+}
