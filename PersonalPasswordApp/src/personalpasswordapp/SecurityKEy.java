@@ -114,7 +114,12 @@ public class SecurityKEy extends JFrame {
             }
         });
 
-        question = new JLabel((String) q.getSelectedItem());
+        try {
+            Validation.setUserPass();
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        question = new JLabel(Validation.q);
         c.gridwidth = 2;
         c.gridx = 1;
         c.gridy = 1;
