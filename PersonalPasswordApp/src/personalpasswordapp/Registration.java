@@ -29,10 +29,11 @@ import javax.swing.JPasswordField;
 public class Registration extends JFrame {
 
     private JLabel label, message;
-    private JTextField inputName, security;
+    private JTextField inputName;
+    static JTextField security;
     private JPasswordField inputPass, inputPass2;
     private JButton register, cancel;
-    public String initUserName;
+    public String initUserName, initSecurity;
     private String initPassword;
     private String[] questions = {"","a", "b", "c"};
     static JComboBox<String> q;
@@ -168,16 +169,6 @@ public class Registration extends JFrame {
             }
 
         }
-    }
-
-    public String getUserName() {
-        initUserName = "Username";
-        return initUserName;
-    }
-
-    public String getPassword() {
-        initPassword = "Password";
-        return initPassword;
     }
 
 }
