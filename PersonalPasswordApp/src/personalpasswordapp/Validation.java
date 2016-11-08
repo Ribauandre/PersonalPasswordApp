@@ -26,6 +26,7 @@ public class Validation {
 
     static String user;
     static String pass;
+    static String security;
     static List<String> list = new ArrayList<>();
     static ArrayList accounts = new ArrayList<>();
     public static AccountsOB account;
@@ -45,7 +46,7 @@ public class Validation {
         BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
         user = list.get(0);
         pass = list.get(1);
-
+        security = list.get(2);
     }
 
     public static void setAccount() throws IOException {
