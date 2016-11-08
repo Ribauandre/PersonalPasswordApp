@@ -29,8 +29,7 @@ import javax.swing.JPasswordField;
 public class Registration extends JFrame {
 
     private JLabel label, message;
-    private JTextField inputName;
-    static JTextField security;
+    private JTextField inputName, security;
     private JPasswordField inputPass, inputPass2;
     private JButton register, cancel;
     public String initUserName, initSecurity;
@@ -89,9 +88,11 @@ public class Registration extends JFrame {
             inputName.setText("");
             inputPass.setText("");
             inputPass2.setText("");
+            security.setText("");
             inputName.setEditable(true);
             inputPass.setEditable(true);
             inputPass2.setEditable(true);
+            security.setEditable(true);
         });
 
         register = new JButton("Register");
@@ -102,10 +103,8 @@ public class Registration extends JFrame {
         register.addActionListener((ActionEvent event) -> {
             initUserName = inputName.getText();
             initPassword = inputPass.getText();
+            initSecurity = security.getText();
         });
-
-        Handler handler = new Handler();
-        register.addActionListener(handler);
         
         message = new JLabel("Security Question:");
         c.gridwidth = 1;
@@ -127,6 +126,9 @@ public class Registration extends JFrame {
         c.gridx = 1;
         c.gridy = 5;
         add(security, c);
+        
+        Handler handler = new Handler();
+        register.addActionListener(handler);
     }
 
     class Handler implements ActionListener {
@@ -154,6 +156,8 @@ public class Registration extends JFrame {
                         bw.write(inputName.getText());
                         bw.newLine();
                         bw.write(inputPass.getText());
+                        bw.newLine();
+                        bw.write(security.getText());
                         bw.newLine();
                         
                         bw.close();
