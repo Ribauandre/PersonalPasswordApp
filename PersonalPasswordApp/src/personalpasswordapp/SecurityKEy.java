@@ -20,6 +20,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPasswordField;
 import static personalpasswordapp.Registration.q;
@@ -93,7 +95,12 @@ public class SecurityKEy extends JFrame {
         c.gridy = 3;
         add(Submit, c);
         Submit.addActionListener((ActionEvent event) -> {
-            if (!inputSecurityKey.getText().equals(Registration.security.getText())) {
+            try {
+                Validation.setUserPass();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (!inputSecurityKey.getText().equals(Validation.security)) {
                 Submit.setEnabled(false);
                 System.out.println("Security answer does not match.");
                 Submit.setEnabled(true);
@@ -105,8 +112,6 @@ public class SecurityKEy extends JFrame {
                 account.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 dispose();
             }
-            //initUserName = inputName.getText();
-            // initPassword = inputPass.getText();
         });
 
         question = new JLabel((String) q.getSelectedItem());
