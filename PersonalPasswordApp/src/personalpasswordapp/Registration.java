@@ -135,7 +135,7 @@ public class Registration extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent event) {
-            if (inputName.getText().equals("") || inputPass.getText().equals("") || inputPass2.getText().equals("") || security.getText().equals("")) {
+            if (inputName.getText().equals("") || inputPass.getText().equals("") || inputPass2.getText().equals("") || q.getSelectedItem().equals("") || security.getText().equals("")) {
                 register.setEnabled(false);
                 System.out.println("All fields must be filled");
                 register.setEnabled(true);
