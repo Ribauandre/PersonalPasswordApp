@@ -157,6 +157,8 @@ public class Registration extends JFrame {
                         bw.newLine();
                         bw.write(inputPass.getText());
                         bw.newLine();
+                        bw.write((String) q.getSelectedItem());
+                        bw.newLine();
                         bw.write(security.getText());
                         bw.newLine();
                         
