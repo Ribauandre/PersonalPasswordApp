@@ -33,7 +33,7 @@ public class SecurityKEy extends JFrame {
     private JLabel label, message, question;
     private JButton add;
     public JTextField inputSecurityKey;
-    private JButton Submit, cancel;
+    private JButton Submit, cancel, back;
 
     public SecurityKEy() {
 
@@ -65,6 +65,19 @@ public class SecurityKEy extends JFrame {
         c.gridy = 2;
         add(inputSecurityKey, c);
 
+        back = new JButton("Back");
+        c.gridwidth = 1;
+        c.gridx = 2;
+        c.gridy = 4;
+        add(back, c);
+        back.addActionListener((ActionEvent e) -> {
+            Login log = new Login();
+            log.setVisible(true);
+            log.setSize(400, 150);
+            log.setDefaultCloseOperation(EXIT_ON_CLOSE);
+            dispose();
+        });
+
         cancel = new JButton("Cancel");
         c.gridwidth = 1;
         c.gridx = 1;
@@ -80,10 +93,22 @@ public class SecurityKEy extends JFrame {
         c.gridy = 3;
         add(Submit, c);
         Submit.addActionListener((ActionEvent event) -> {
+            if (!inputSecurityKey.getText().equals(Registration.security.getText())) {
+                Submit.setEnabled(false);
+                System.out.println("Security answer does not match.");
+                Submit.setEnabled(true);
+            } else {
+                Submit.setEnabled(true);
+                Account account = new Account();
+                account.setVisible(true);
+                account.setSize(400, 150);
+                account.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                dispose();
+            }
             //initUserName = inputName.getText();
             // initPassword = inputPass.getText();
         });
-        
+
         question = new JLabel((String) q.getSelectedItem());
         c.gridwidth = 2;
         c.gridx = 1;
