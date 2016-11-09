@@ -75,9 +75,9 @@ public class Validation {
         for (int i = 0; i < list.size();) {
             String name = list.get(i);
             i++;
-            String user = list.get(i);
+            String user1 = list.get(i);
             i++;
-            String pass = list.get(i);
+            String pass1 = list.get(i);
             i++;
             account = new AccountsOB(name, user, pass);
             accounts.add(account);
