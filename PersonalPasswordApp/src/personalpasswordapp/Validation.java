@@ -28,6 +28,8 @@ public class Validation {
 
     static String user;
     static String pass;
+    static String q;
+    static String security;
     static List<String> list = new ArrayList<>();
     static ArrayList<AccountsOB> accounts = new ArrayList<>();
     public static AccountsOB account;
@@ -46,7 +48,8 @@ public class Validation {
         }
         user = list.get(0);
         pass = list.get(1);
-
+        q = list.get(2);
+        security = list.get(3);
     }
 
     public static void setAccount(){
