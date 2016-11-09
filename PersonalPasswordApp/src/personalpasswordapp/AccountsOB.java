@@ -14,10 +14,10 @@ public class AccountsOB {
     String accountUser;
     String accountPass;
     
-    public AccountsOB(String name, String user, String pass ){
+    public AccountsOB(String name, String user1, String pass1 ){
         accountName = name;
-        accountUser = user;
-        accountPass = pass;
+        accountUser = user1;
+        accountPass = pass1;
     }
     public String getName(){
         return accountName;
