@@ -79,7 +79,7 @@ public class Validation {
             i++;
             String pass1 = list.get(i);
             i++;
-            account = new AccountsOB(name, user, pass);
+            account = new AccountsOB(name, user1, pass1);
             accounts.add(account);
             System.out.println(accounts.size());
                     }
