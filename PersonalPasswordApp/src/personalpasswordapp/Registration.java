@@ -34,8 +34,8 @@ public class Registration extends JFrame {
     private JButton register, cancel;
     public String initUserName, initSecurity;
     private String initPassword;
-    private String[] questions = {"","What is best friends first name?", 
-                "What is the name of your first higth school?", "What is the name of your first pet?"};
+    private String[] questions = {"","What is your best friends first name?", 
+                "What is the name of your first high school?", "What is the name of your first pet?"};
     static JComboBox<String> q;
 
     public Registration() {
