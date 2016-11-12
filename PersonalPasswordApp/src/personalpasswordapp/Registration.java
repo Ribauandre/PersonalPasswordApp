@@ -42,6 +42,7 @@ public class Registration extends JFrame {
         super("Registration");
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+        GridBagConstraints c2 = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         label = new JLabel("Please enter Username and Password.");
         c.gridx = 0;
@@ -81,10 +82,12 @@ public class Registration extends JFrame {
         add(inputPass2, c);
 
         cancel = new JButton("Cancel");
-        c.gridwidth = 1;
-        c.gridx = 1;
-        c.gridy = 6;
-        add(cancel, c);
+        c2.gridwidth = 1;
+        c2.gridx = 1;
+        c2.gridy = 6;
+        c2.anchor = GridBagConstraints.EAST;
+        c2.weightx = 1;
+        add(cancel, c2);
         cancel.addActionListener((ActionEvent event) -> {
             inputName.setText("");
             inputPass.setText("");
@@ -97,10 +100,11 @@ public class Registration extends JFrame {
         });
 
         register = new JButton("Register");
-        c.gridwidth = 1;
-        c.gridx = 2;
-        c.gridy = 6;
-        add(register, c);
+        c2.gridwidth = 1;
+        c2.gridx = 2;
+        c2.gridy = 6;
+        c2.anchor = GridBagConstraints.EAST;
+        add(register, c2);
         register.addActionListener((ActionEvent event) -> {
             initUserName = inputName.getText();
             initPassword = inputPass.getText();
