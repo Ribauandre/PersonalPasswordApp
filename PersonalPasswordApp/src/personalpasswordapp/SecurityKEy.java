@@ -106,10 +106,11 @@ public class SecurityKEy extends JFrame {
                 Submit.setEnabled(true);
             } else {
                 Submit.setEnabled(true);
-                Account account = new Account();
-                account.setVisible(true);
-                account.setSize(400, 150);
-                account.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                System.out.println("Your password is: "+Validation.pass);
+                Login login = new Login();
+                login.setVisible(true);
+                login.setSize(400, 150);
+                login.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 dispose();
             }
         });
