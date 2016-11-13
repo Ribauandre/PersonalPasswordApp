@@ -52,6 +52,7 @@ public class Login extends JFrame {
         c.gridwidth = 3;
         c.gridy = 0;
         add(label, c);
+        Validation.setAccount();
 
         message = new JLabel("Username: ");
         c.gridwidth = 1;
