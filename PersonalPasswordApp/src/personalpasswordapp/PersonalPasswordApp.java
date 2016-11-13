@@ -21,6 +21,7 @@ public class PersonalPasswordApp {
         Login app2 = new Login();
         File f = new File("register.text");
         
+        
         if(f.length()==0)
         {
             app.setSize(400, 200);
