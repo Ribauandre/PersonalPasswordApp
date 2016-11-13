@@ -10,9 +10,9 @@ package personalpasswordapp;
  * @author andreribau
  */
 public class AccountsOB {
-    String accountName;
-    String accountUser;
-    String accountPass;
+    public String accountName;
+    public String  accountUser;
+    public String accountPass;
     
     public AccountsOB(String name, String user1, String pass1 ){
         accountName = name;
