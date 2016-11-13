@@ -49,6 +49,7 @@ public class Add extends JFrame {
     public String initUserName;
     public String initUser;
     private String initPassword;
+    boolean equals = false;
 
     public Add() {
         super("Add");
@@ -96,13 +97,13 @@ public class Add extends JFrame {
         c.gridy = 4;
         add(cancel, c);
         cancel.addActionListener((ActionEvent event) -> {
-            inputName.setText("");
-            inputPass.setText("");
-            inputUser.setText("");
-            inputName.setEditable(true);
-            inputPass.setEditable(true);
-            inputUser.setEditable(true);
+            Account account = new Account();
+                    account.setVisible(true);
+                    account.setSize(400, 150);
+                    account.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
         });
+        
         add = new JButton("Add");
         c.gridwidth = 1;
         c.gridx = 2;
@@ -112,7 +113,9 @@ public class Add extends JFrame {
             initUserName = inputName.getText();
             initPassword = inputPass.getText();
             initUser = inputUser.getText();
+                
         });
+        
         Handler handler = new Handler();
         add.addActionListener(handler);
     }
@@ -121,12 +124,24 @@ public class Add extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent event){
+            boolean equals = false;
+            for(int i = 0; i < Validation.accounts.size(); i++){
+                if(inputName.getText().equals(Validation.accounts.get(i).accountName)){
+                    equals = true;
+                }
+                
+            }
             if (inputName.getText().equals("") || inputPass.getText().equals("") || inputUser.getText().equals("")) {
-                add.setEnabled(false);
                 System.out.println("Enter Username and Password");
                 label.setText("All fields must be populated");
-                add.setEnabled(true);
-            } else {
+              
+            }
+            else if (equals) {
+
+                System.out.println("Enter Username and Password");
+                label.setText("Account Already Exists or Similar account.");
+            }
+            else {
                 label.setText("Add Successfully Completed");
                 inputName.setEditable(false);
                 inputPass.setEditable(false);
@@ -141,6 +156,11 @@ public class Add extends JFrame {
                     bw.write(inputPass.getText());
                     bw.newLine();
                     bw.close();
+                    Account log = new Account();
+                    log.setVisible(true);
+                    log.setSize(400, 150);
+                    log.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
                 } catch (IOException e) {
                     System.out.println("Error is " + e);
                     label.setText("Add Successfully Completed");
@@ -160,20 +180,18 @@ public class Add extends JFrame {
                     } catch (IOException i) {
                         System.out.println("Error is " + e);
                     }
+                    Validation.accounts.clear();
+                    Validation.list.clear();
                     Account log = new Account();
                     log.setVisible(true);
                     log.setSize(400, 150);
                     log.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
                 }
-                Validation.setAccountsList();
-                Account log = new Account();
-                log.setVisible(true);
-                log.setSize(350, 150);
-                log.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                dispose();
+                    }
+            
+                
+             
             }
         }
     }
-
-}
