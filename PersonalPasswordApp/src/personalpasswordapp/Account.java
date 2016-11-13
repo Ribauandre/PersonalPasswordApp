@@ -33,6 +33,7 @@ public class Account extends JFrame {
     private JLabel label, message;
     private JButton add;
     public AccountsOB account;
+    public static String select;
 
     
 public Account()
@@ -46,6 +47,10 @@ public Account()
         c.gridwidth = 3;
         c.gridy = 0;
         add(label, c);
+        Validation.accounts.clear();
+        Validation.list.clear();
+        Validation.setAccount();
+        Validation.setAccountsList();
        
         
         add = new JButton("Add");
@@ -60,11 +65,7 @@ public Account()
                     add.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
         });
-        Validation.setAccount();
-        
-   
         if(Validation.list.size() > 0){
-            Validation.setAccountsList();
             String[] array = new String[Validation.accounts.size()];
             for(int i = 0; i < array.length; i++) {
             array[i] = Validation.accounts.get(i).accountName;
@@ -74,6 +75,16 @@ public Account()
         c.gridx = 1;
         c.gridy = 1;
         add(comboBox, c);
+        comboBox.addActionListener((ActionEvent event) -> {
+            select = comboBox.getSelectedItem().toString();
+            System.out.println(select);
+            Password pass= new Password();
+                    pass.setVisible(true);
+                    pass.setSize(400, 150);
+                    pass.setDefaultCloseOperation(EXIT_ON_CLOSE);
+                    dispose();
+                    
+        });
         }
          
         else{
