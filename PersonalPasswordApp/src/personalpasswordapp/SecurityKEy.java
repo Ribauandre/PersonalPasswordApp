@@ -5,7 +5,6 @@
  */
 package personalpasswordapp;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
@@ -13,18 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.JPasswordField;
-import static personalpasswordapp.Registration.q;
 
 /**
  *
@@ -33,7 +24,6 @@ import static personalpasswordapp.Registration.q;
 public class SecurityKEy extends JFrame {
 
     private JLabel label, message, question;
-    private JButton add;
     public JTextField inputSecurityKey;
     private JButton Submit, cancel, back;
 
@@ -42,6 +32,7 @@ public class SecurityKEy extends JFrame {
         super("SecurityKEy");
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+        GridBagConstraints c2 = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         label = new JLabel("Please answer security question.");
         c.gridx = 0;
@@ -68,10 +59,11 @@ public class SecurityKEy extends JFrame {
         add(inputSecurityKey, c);
 
         back = new JButton("Back");
-        c.gridwidth = 1;
-        c.gridx = 2;
-        c.gridy = 4;
-        add(back, c);
+        c2.gridwidth = 1;
+        c2.gridx = 2;
+        c2.gridy = 4;
+        c2.anchor = GridBagConstraints.EAST;
+        add(back, c2);
         back.addActionListener((ActionEvent e) -> {
             Login log = new Login();
             log.setVisible(true);
@@ -81,19 +73,22 @@ public class SecurityKEy extends JFrame {
         });
 
         cancel = new JButton("Cancel");
-        c.gridwidth = 1;
-        c.gridx = 1;
-        c.gridy = 3;
-        add(cancel, c);
+        c2.gridwidth = 1;
+        c2.gridx = 1;
+        c2.gridy = 3;
+        c2.anchor = GridBagConstraints.EAST;
+        c2.weightx = 1;
+        add(cancel, c2);
         cancel.addActionListener((ActionEvent event) -> {
             inputSecurityKey.setText("");
         });
 
         Submit = new JButton("Submit");
-        c.gridwidth = 1;
-        c.gridx = 2;
-        c.gridy = 3;
-        add(Submit, c);
+        c2.gridwidth = 1;
+        c2.gridx = 2;
+        c2.gridy = 3;
+        c2.anchor = GridBagConstraints.EAST;
+        add(Submit, c2);
         Submit.addActionListener((ActionEvent event) -> {
             try {
                 Validation.setUserPass();
