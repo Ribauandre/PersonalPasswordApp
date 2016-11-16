@@ -44,7 +44,8 @@ public class Registration extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         GridBagConstraints c2 = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        label = new JLabel("Please enter Username and Password.");
+        c2.fill = GridBagConstraints.BOTH;
+        label = new JLabel("<HTML><FONT color=\"#00009\"><b><h3>Please Enter Username and Password</b></h3></FONT></HTML>");
         c.gridx = 0;
         c.gridwidth = 3;
         c.gridy = 0;
