@@ -95,6 +95,7 @@ public class Login extends JFrame {
         c2.gridwidth = 2;
         c2.gridx = 1;
         c2.gridy = 3;
+        c2.weightx = 1;
         add(login, c2);
         login.addActionListener((ActionEvent event) -> {
             initUserName = inputName.getText();
