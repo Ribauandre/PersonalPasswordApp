@@ -34,7 +34,8 @@ public class SecurityKEy extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         GridBagConstraints c2 = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        label = new JLabel("Please answer security question.");
+        c2.fill = GridBagConstraints.BOTH;
+        label = new JLabel("<HTML><FONT color=\"#00009\"><b><h3>Please Enter Security Question</b></h3></FONT></HTML>");
         c.gridx = 0;
         c.gridwidth = 3;
         c.gridy = 0;
