@@ -6,20 +6,7 @@
 package personalpasswordapp;
 
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.JPasswordField;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -28,14 +15,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import static personalpasswordapp.Validation.accounts;
 
 /**
  *
@@ -56,7 +40,7 @@ public class Add extends JFrame {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        label = new JLabel("Please enter Account Info.");
+        label = new JLabel("<HTML><FONT color=\"#00009\"><b><h3>Please Enter Account Info</b></h3></FONT></HTML>");
         c.gridx = 0;
         c.gridwidth = 3;
         c.gridy = 0;
@@ -71,7 +55,7 @@ public class Add extends JFrame {
         c.gridx = 1;
         c.gridy = 1;
         add(inputName, c);
-        message = new JLabel("Account UserName ");
+        message = new JLabel("Account Username ");
         c.gridwidth = 1;
         c.gridx = 0;
         c.gridy = 2;
@@ -81,7 +65,7 @@ public class Add extends JFrame {
         c.gridx = 1;
         c.gridy = 2;
         add(inputUser, c);
-        message = new JLabel("Account Pass ");
+        message = new JLabel("Account Password ");
         c.gridwidth = 1;
         c.gridx = 0;
         c.gridy = 3;
