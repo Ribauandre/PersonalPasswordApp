@@ -6,17 +6,13 @@
 package personalpasswordapp;
 
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -38,7 +34,7 @@ public class Login extends JFrame {
     private JLabel label, message;
     private JTextField inputName;
     private JPasswordField inputPass;
-    private JButton login, cancel, reset;
+    private JButton login, reset;
     public String initUserName;
     private String initPassword;
 
@@ -46,6 +42,7 @@ public class Login extends JFrame {
         super("Login");
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+        GridBagConstraints c2 = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
         label = new JLabel("Please enter Username and Password.");
         c.gridx = 0;
@@ -94,10 +91,10 @@ public class Login extends JFrame {
         });
 
         login = new JButton("Login");
-        c.gridwidth = 2;
-        c.gridx = 1;
-        c.gridy = 3;
-        add(login, c);
+        c2.gridwidth = 2;
+        c2.gridx = 1;
+        c2.gridy = 3;
+        add(login, c2);
         login.addActionListener((ActionEvent event) -> {
             initUserName = inputName.getText();
             initPassword = inputPass.getText();
