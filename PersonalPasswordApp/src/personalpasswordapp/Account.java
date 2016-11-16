@@ -5,24 +5,13 @@
  */
 package personalpasswordapp;
 
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  *
@@ -42,7 +31,7 @@ public Account()
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.BOTH;
-        label = new JLabel("Accounts");
+        label = new JLabel("<HTML><FONT color=\"#00009\"><b><h3>Account</b></h3></FONT></HTML>");
         c.gridx = 0;
         c.gridwidth = 3;
         c.gridy = 0;
@@ -61,7 +50,7 @@ public Account()
          add.addActionListener((ActionEvent event) -> {
             Add add= new Add();
                     add.setVisible(true);
-                    add.setSize(400, 150);
+                    add.setSize(400, 175);
                     add.setDefaultCloseOperation(EXIT_ON_CLOSE);
                     dispose();
         });
