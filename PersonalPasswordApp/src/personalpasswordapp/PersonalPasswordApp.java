@@ -1,9 +1,7 @@
 
 package personalpasswordapp;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -24,13 +22,13 @@ public class PersonalPasswordApp {
         
         if(f.length()==0)
         {
-            app.setSize(400, 200);
+            app.setSize(400, 250);
             app.setVisible(true);
             app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
         else
         {
-            app2.setSize(400,200);
+            app2.setSize(400, 200);
             app2.setVisible(true);
             app2.setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
