@@ -81,7 +81,6 @@ public class Validation {
             i++;
             account = new AccountsOB(name, user1, pass1);
             accounts.add(account);
-            System.out.println(accounts.size());
                     }
         }
     }
