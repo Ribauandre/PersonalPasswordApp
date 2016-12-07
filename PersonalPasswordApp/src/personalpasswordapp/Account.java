@@ -66,7 +66,6 @@ public Account()
         add(comboBox, c);
         comboBox.addActionListener((ActionEvent event) -> {
             select = comboBox.getSelectedItem().toString();
-            System.out.println(select);
             Password pass= new Password();
                     pass.setVisible(true);
                     pass.setSize(400, 150);
