@@ -130,6 +130,7 @@ public class Add extends JFrame {
                 inputName.setEditable(false);
                 inputPass.setEditable(false);
                 inputName.setBackground(Color.LIGHT_GRAY);
+                //add everything the encyption here
                 inputPass.setBackground(Color.LIGHT_GRAY);
                 try {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(new File("accounts.text"), true));
